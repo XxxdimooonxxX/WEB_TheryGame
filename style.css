@@ -1,0 +1,31 @@
+body{
+	background: #111111; /*1A2B47;*/
+	color: #B7D5D7;
+	border: 3px solid #37B5A5;
+	padding: 12px;
+}
+
+.table_dark {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 14px;
+	width: 640px;
+	text-align: left;
+	border-collapse: collapse;
+	background: #252F48;
+	margin-bottom: 12px;
+}
+
+.table_dark th {
+	color: #EDB749;
+	padding: 12px 17px;
+}
+
+.table_dark td {
+	color: #CAD4D6;
+	border: 1px solid #37B5A5;
+	padding: 7px 17px;
+}
+
+#res{
+	width: 200px;
+}

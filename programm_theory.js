@@ -13,28 +13,21 @@ var arrVA = new Array(3), arrMA = new Array(3), arrSE = new Array(3), arrGUR = n
 //===================================
 //===========programm================
 // Output matrix in WEB:
-var matrix_main = document.getElementById("matrix");
-matrix_main.style.whiteSpace = "pre-wrap";//Не убирает табуляцию
-matrix_main.innerHTML = "======= Matrix =========</br>";
-matrix_main.innerHTML += "---------------------------------</br>";
-matrix_main.innerHTML += "|S/A		|B1		|B2		|B3		|</br>";
-matrix_main.innerHTML += "---------------------------------</br>";
+var table_td = document.querySelectorAll(".table_dark tr td");//elements table-matrix
 
-for (i = 0; i < 3; i++) {
-	matrix_main.innerHTML += "|A" + (i + 1) + "		";
-	for (j = 0; j < 3; j++) {
-		matrix_main.innerHTML += "|" + arrSA[i][j] + "		";
+var cnt_id = 0;//index array table_td
+//Add matrix in WEB suite in table_dark-matrix
+for(i = 0; i < 3; i++){
+	for(j = 0; j < 3; j++){
+		table_td[cnt_id].innerHTML = arrSA[i][j];
+		cnt_id++;
 	}
-	matrix_main.innerHTML += "|</br>";
 }
 
-matrix_main.innerHTML += "---------------------------------</br>";
-matrix_main.innerHTML += "\nKriterii: </br>";
-matrix_main.innerHTML += "-------------";
 //===================================
+var res_td = document.querySelectorAll("#res tr td");//elements Result-matrix
+//k_show.style.whiteSpace = "pre-wrap";//Не убирает табуляцию
 // I:
-var k_show = document.getElementById("Kriterii");
-k_show.style.whiteSpace = "pre-wrap";//Не убирает табуляцию
 var a;//var. for trash
 for (i = 0; i < 3; i++) {//zicl for search min in all strtegii Samsung
 	a = arrSA[i][0];
@@ -52,7 +45,7 @@ for (i = 1; i < 3; i++) {
 		va = i;
 	}
 }
-k_show.innerHTML = "|I		- A" + (va + 1) + "|</br>";
+res_td[0].innerHTML = "A" + (va + 1);
 //===================================
 // II:
 var a1;//var. for trash
@@ -73,7 +66,7 @@ for (i = 1; i < 3; i++) {
 		ma = i;
 	}
 }
-k_show.innerHTML += "|II		- A" + (ma + 1) + "|</br>";
+res_td[1].innerHTML = "A" + (ma + 1);
 //===================================
 // III:
 var A = 0.4, B = 0.6;//const
@@ -87,7 +80,7 @@ for (i = 1; i < 3; i++) {
 		gur = i;
 	}
 }
-k_show.innerHTML += "|III		- A" + (gur + 1) + "|</br>";
+res_td[2].innerHTML = "A" + (gur + 1);
 //===================================
 // IV:
 var se1 = arrMA[0];
@@ -97,7 +90,7 @@ for (i = 1; i < 3; i++) {
 		se = i;
 	}
 }
-k_show.innerHTML += "|IV		- A" + (se + 1) + "|</br>";
+res_td[3].innerHTML = "A" + (se + 1);
 //===================================
 // V:
 var AA = 0.33;
@@ -118,7 +111,5 @@ for (i = 1; i < 3; i++) {
 		la = i;
 	}
 }
-k_show.innerHTML += "|V		- A" + (la + 1) + "|</br>";
+res_td[4].innerHTML = "A" + (la + 1);
 //===================================
-k_show.innerHTML += "-------------</br>";
-//==================================
