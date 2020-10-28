@@ -1,10 +1,12 @@
+/* Not comment*/
 body{
-	background: #111111; /*1A2B47;*/
-	color: #B7D5D7;
-	border: 3px solid #37B5A5;
+	background: #000000;
+	color: #FCEE09;
+	border: 3px solid #00F0FF;
 	padding: 12px;
 }
 
+/* Style for two tables */
 .table_dark {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 14px;
@@ -16,16 +18,61 @@ body{
 }
 
 .table_dark th {
-	color: #EDB749;
+	color: #FCEE09;
 	padding: 12px 17px;
 }
 
-.table_dark td {
-	color: #CAD4D6;
-	border: 1px solid #37B5A5;
-	padding: 7px 17px;
+.table_dark tr:first-child th{
+	background-color: #121C35;
 }
 
+.table_dark td {
+	color: #FCEE09;
+	border: 1px solid #00F0FF;
+	padding: 7px 17px;
+}
+/* End style for two tables*/
+
+/* #res - result-table */
 #res{
 	width: 200px;
+}
+
+/* Buttn result */
+div.result{
+	display: inline-block;
+	color: #FCEE09;
+	font-weight: 700;
+	user-select: none;
+	padding: .5em 2em;
+	margin-bottom: 12px;
+	outline: none;
+	border: 2px solid #00F0FF;
+	border-radius: 1px;
+	transition: 0.2s;
+}
+
+div.result:hover{
+	background: rgba(255, 255, 255, .2);
+}
+
+div.result:active{
+	background: #00F0FF;
+	color: #000;
+}
+/* End Buttn result */
+
+/**/
+input {
+    display: block;
+    border: none;
+    color: #FCEE09;
+    background: transparent;
+    border-bottom: 1px dotted black;
+    padding: 5px 2px 0 2px;
+}
+ 
+input:focus {
+    outline: none;
+    border-color: #51CBEE;
 }
