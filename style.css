@@ -1,24 +1,78 @@
+/*Обнуление*/
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+
 /* Not comment*/
 body{
 	background: #000000;
-	color: #FCEE09;
-	border: 3px solid #00F0FF;
-	padding: 12px;
+	color: #FFB83C;
 }
 
-/* Style for two tables */
+h1{
+	font-size: 36px;
+	text-align: center;
+	padding: 5px;
+	margin: 5px;
+	text-decoration: underline;
+	background: #FFB83C;
+	color: #000000;
+}
+
+h2{
+	font-size: 22px;
+	padding: 5px;
+	margin: 5px;
+	background: #FFB83C;
+	color: #000000;
+}
+
+/*======Style for two tables======*/
 .table_dark {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 14px;
-	width: 640px;
 	text-align: left;
 	border-collapse: collapse;
 	background: #252F48;
-	margin-bottom: 12px;
+	margin: 5px;
 }
 
 .table_dark th {
-	color: #FCEE09;
+	color: #FFB83C;
 	padding: 12px 17px;
 }
 
@@ -27,52 +81,57 @@ body{
 }
 
 .table_dark td {
-	color: #FCEE09;
-	border: 1px solid #00F0FF;
+	color: #FFB83C;
+	border: 1px solid #00B6A6;
 	padding: 7px 17px;
 }
-/* End style for two tables*/
+/*======End style for two tables======*/
 
 /* #res - result-table */
 #res{
 	width: 200px;
 }
 
-/* Buttn result */
-div.result{
-	display: inline-block;
-	color: #FCEE09;
+/*======Button result======*/
+div#bt{
+	float: right;
+	color: #FFB83C;
 	font-weight: 700;
-	user-select: none;
 	padding: .5em 2em;
-	margin-bottom: 12px;
-	outline: none;
-	border: 2px solid #00F0FF;
-	border-radius: 1px;
-	transition: 0.2s;
+	margin-right: 5px;
+	border: 2px solid #00B6A6;
+	cursor: default;
 }
 
-div.result:hover{
+div#bt:hover{
 	background: rgba(255, 255, 255, .2);
 }
 
-div.result:active{
+div#bt:active{
 	background: #00F0FF;
 	color: #000;
 }
-/* End Buttn result */
+/*======End Buttn result======*/
 
 /**/
 input {
     display: block;
     border: none;
-    color: #FCEE09;
+    color: #FFB83C;
     background: transparent;
     border-bottom: 1px dotted black;
     padding: 5px 2px 0 2px;
+	width: 80px;
 }
  
 input:focus {
     outline: none;
     border-color: #51CBEE;
+}
+
+/**/
+#center{
+	width: 800px;
+	margin: 0 auto;
+	border: 3px solid #00B6A6;
 }

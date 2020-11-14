@@ -151,3 +151,17 @@ bt_result.onclick = () =>{
 	res_td[4].innerHTML = "A" + (la + 1);//Output in V row.
 	//============================================================================
 }
+
+////////// Delete data in inputs and res-table ///////////////
+var bt_reset = document.querySelector("div.reset");
+bt_reset.onclick = () => {
+	var inputs_data = document.querySelectorAll("input");
+	for(i = 0; i < inputs_data.length; i++){
+		inputs_data[i].value = "";
+	}
+	
+	var res_td = document.querySelectorAll("#res tr td");
+	for(i = 0; i < res_td.length; i++){
+		res_td[i].innerHTML = "";
+	}
+}

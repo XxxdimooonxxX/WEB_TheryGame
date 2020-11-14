@@ -1,86 +1,102 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>Theory game</title>
 		<link href = "style.css" rel = "stylesheet">
 	</head>
 	<body>
 		
-		<table class="table_dark"><!-- Matrix-table -->
-			<tr>
-				<th colspan = 4 align = center>Matrix</th>
-			</tr>
-			<tr>
-				<th>S/A</th>
-				<th>B1</th>
-				<th>B2</th>
-				<th>B3</th>
-			</tr>
-			<tr>
-				<th>A1</th>
-				<td>
-					<input name = "matrix" type = "number">
-				</td>
-				<td>
-					<input name = "matrix" type = "number">
-				</td>
-				<td>
-					<input name = "matrix" type = "number">
-				</td>
-			</tr>
-			<tr>
-				<th>A2</th>
-				<td>
-					<input name = "matrix" type = "number">
-				</td>
-				<td>
-					<input name = "matrix" type = "number">
-				</td>
-				<td>
-					<input name = "matrix" type = "number">
-				</td>
-			</tr>
-			<tr>
-				<th>A3</th>
-				<td>
-					<input name = "matrix" type = "number">
-				</td>
-				<td>
-					<input name = "matrix" type = "number">
-				</td>
-				<td>
-					<input name = "matrix" type = "number">
-				</td>
-			</tr>
-		</table><!-- End matrix-table -->
-		
-		<!-- -->
-		<div class = "result">Результат</div>
-		
-		<table id = "res" class="table_dark"><!-- Result-table -->
-			<tr>
-				<th colspan = 3 align = center>Номера стратегий, которые выбрали критерии</th>
-			</tr>
-			<tr>
-				<th>I</th>
-				<td></td>
-			</tr>
-			<tr>
-				<th>II</th>
-				<td></td>
-			</tr>
-			<tr>
-				<th>III</th>
-				<td></td>
-			</tr>
-			<tr>
-				<th>IV</th>
-				<td></td>
-			</tr>
-			<tr>
-				<th>V</th>
-				<td></td>
-			</tr>
-		</table><!-- End Result-table -->
+		<!-- #Center -->
+		<div id = "center">
+			<h1>Теория игр с природой</h1>
+			<h2>Ввод</h2>
+			
+			<!-- Buttons -->
+			<div class = "result" id = "bt">Результат</div>
+			<div class = "reset" id = "bt">Очистить</div>
+			<!--End-->
+			
+			<!-- Matrix-table -->
+			<table class="table_dark">
+				<tr>
+					<th colspan = 4 align = center>Matrix</th>
+				</tr>
+				<tr>
+					<th>S/A</th>
+					<th>B1</th>
+					<th>B2</th>
+					<th>B3</th>
+				</tr>
+				<tr>
+					<th>A1</th>
+					<td>
+						<input name = "matrix" type = "number">
+					</td>
+					<td>
+						<input name = "matrix" type = "number">
+					</td>
+					<td>
+						<input name = "matrix" type = "number">
+					</td>
+				</tr>
+				<tr>
+					<th>A2</th>
+					<td>
+						<input name = "matrix" type = "number">
+					</td>
+					<td>
+						<input name = "matrix" type = "number">
+					</td>
+					<td>
+						<input name = "matrix" type = "number">
+					</td>
+				</tr>
+				<tr>
+					<th>A3</th>
+					<td>
+						<input name = "matrix" type = "number">
+					</td>
+					<td>
+						<input name = "matrix" type = "number">
+					</td>
+					<td>
+						<input name = "matrix" type = "number">
+					</td>
+				</tr>
+			</table>
+			<!-- End matrix-table -->
+			
+			<h2>Вывод</h2>
+			
+			<!-- Result-table -->
+			<table id = "res" class="table_dark">
+				<tr>
+					<th colspan = 3 align = center>Номера стратегий, которые выбрали критерии</th>
+				</tr>
+				<tr>
+					<th>I</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>II</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>III</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>IV</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>V</th>
+					<td></td>
+				</tr>
+			</table>
+			<!-- End Result-table -->
+		</div>
+		<!-- End #center-->
 	</body>
 	<script src = "programm_theory.js"></script>
 </html>
