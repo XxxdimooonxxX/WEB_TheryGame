@@ -55,22 +55,63 @@ h1{
     border: 2px solid #007FE6;
 }
 
+/*=========== Info ===========*/
+/* button: */
+.bt_plus{
+	border: 2px solid #007FE6;
+	display: inline-block;
+	line-height: 17px;
+	padding: 5px;
+	float: none;
+	font-size: 30px;
+	cursor: default;
+	user-select: none;
+}
+
+
+.hidden_text{
+	border: 2px dashed #007FE6;
+	padding: 5px;
+	height: 0px;
+	width: 0px;
+	overflow: hidden;
+	position: absolute;
+	bottom: 0px;
+	transition: height 0.5s;
+	font-size: 20px;
+}
+.hidden_text>span{
+	font-weight: 700;
+}
+
+.f_bt{
+	margin-left: 5px;
+}
+.h_t_2{
+	float: right;
+}
+/*=========== End Info ===========*/
+
 h2{
     font-size: 24px;
     line-height: 30px;
     border-bottom: 1px solid #007FE6;
     margin-bottom: 5px;
+	clear: both;
 }
 
 /*=== Button ===*/
 #bt{
     border: 2px solid #007FE6;
-    float: right;
     margin-left: 5px;
     padding: 0px 5px;
+	display: inline-block;
     font-size: 20px;
     line-height: 30px;
     cursor: default;
+	user-select: none;
+	
+	float: right;
 }
 #bt:hover{
     background: rgba(255, 255, 255, 0.4);
@@ -87,6 +128,8 @@ h2{
     color: #A8F7FF;
     font-size: 18px;
     line-height: 30px;
+	
+	float: left;
 }
 .table_dark td{
     border: 1px solid #A8F7FF;
@@ -97,7 +140,7 @@ h2{
     padding: 0px 5px;
 }
 .table_dark input{
-    width: 100%;
+    width: 100px;
     display: block;
     border: none;
     color: #A8F7FF;
@@ -110,3 +153,7 @@ h2{
     border-color: #A8F7FF;
 }
 /*=== End Matrix-table ===*/
+
+#res{
+	float: none;
+}
