@@ -56,6 +56,41 @@ h1{
     margin-bottom: 5px;
 }
 
+h2{
+    font-size: 24px;
+    line-height: 30px;
+    border-bottom: 1px solid #007FE6;
+    margin-bottom: 5px;
+	clear: both;
+}
+
+/*=== size matrix - "form" ===*/
+form{
+    background: #007FE6;
+    color: #A8F7FF;
+    display: inline-block;
+    padding: 5px;
+}
+form>div{
+    display: inline-block;
+}
+form>div.inp{
+    border: 1px solid #A8F7FF;
+    padding: 5px;
+}
+form>div.inp>input{
+    border: none;
+    color: #A8F7FF;
+    background: transparent;
+    border-bottom: 1px dashed black;
+    padding: 5px 2px 0 2px;
+}
+form>div.inp>input:focus{
+    outline: none;
+    border-color: #A8F7FF;
+}
+/*=== END size matrix - "form" ===*/
+
 /*=========== Info ===========*/
 /* button: */
 .bt_plus{
@@ -93,16 +128,8 @@ h1{
 }
 /*=========== End Info ===========*/
 
-h2{
-    font-size: 24px;
-    line-height: 30px;
-    border-bottom: 1px solid #007FE6;
-    margin-bottom: 5px;
-	clear: both;
-}
-
 /*=== Button ===*/
-#bt{
+.bt{
     border: 2px solid #007FE6;
     margin-left: 5px;
     padding: 0px 5px;
@@ -112,12 +139,12 @@ h2{
     cursor: default;
 	user-select: none;
 	
-	float: right;
+	float: none;
 }
-#bt:hover{
+.bt:hover{
     background: rgba(255, 255, 255, 0.4);
 }
-#bt:active{
+.bt:active{
     background: rgba(255, 255, 255, 1);
 }
 /*=== End Button ===*/
