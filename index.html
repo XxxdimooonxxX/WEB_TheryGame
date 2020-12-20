@@ -5,111 +5,145 @@
 		<link href = "style.css" rel = "stylesheet">
 	</head>
 	<body>
-		<!-- #Center -->
-		<div id = "center">
+		<!-- <.cetnter> -->
+		<div class="center">
 			<h1>Игры с природой</h1>
-			
-			<!-- size_table -->
-			<div class="size_table">
-				<h2>Размер матрицы</h2>
-
-				<form action="#">
-					<div class="inp">
-						<input type="number" name = "size1" id = "size_x">
-					</div>
-					<div class="inp_text">x</div>
-					<div class="inp">
-						<input type="number" name = "size1" id = "size_y">
-					</div>
+			<!-- <.size-matrix> -->
+			<div class="size-matrix">
+				<h2 class="size-matrix__title title">Размер матрицы</h2>
+				<form action="#" class="size-matrix__form">
+					<div class="size-matrix__border-inputs">
+						<input type="number" class="size-matrix__input" id = "input_x">
+						x
+						<input type="number" class="size-matrix__input" id = "input_y">
+					</div><!--
+					--><div class="size-matrix__button button" id = "create">Создать</div>
 				</form>
-				<div class="bt" id = "create">Создать</div>
-
-				<!-- Info -->
-				<div class = "bt_plus">+</div>
-				<p class = "hidden_text">
-					<span>Игра</span> – это построение упрощенно формализованной модели
-					конфликта.</br>			
-					<span>Теория игр</span> – это раздел математики, изучающий математические модели в конфликтных ситуациях. </br>	
-					<span>Стратегия игрока</span> – это совокупность правил, определяющих последовательность действий. </br>	
-					<span>Чистая стратегия</span> - решения игроков неслучайные. </br>	
-					<span>Смешанная стратегия</span> - выбор игрока случайная величина.</br>	
-					<span>Оптимальная стратегия</span> - максимально возможный средний выигрыш. </br>	
-					<span>Игры с природой</span> – математические модели, для которых выбор решения зависит об объективной действительности. 
-					Например, покупательский спрос, состояние природы и т.д. </br>	
-					<span>«Природа»</span> – это обобщенное понятие противника, не преследующего собственных целей в данном конфликте.</br>	
-				</p>
-				<!-- End Info -->
+				<div class="size-matrix__hidden-text hidden-text">
+					<div class="hidden-text__title">Пояснение к созданию матрицы<div class="hidden-text__x">+</div></div>
+					<div class="hidden-text__text">
+						<span>1-ое значение(перед "х")</span> – кол-во состояний природы.</br>
+						<span>2-ое значение(после "х")</span> – кол-во стратегий.</br>
+					</div>
+				</div>
 			</div>
-			<!-- END size_table -->
-			
-			<!-- ВВОД -->
+			<!-- </.size-matrix> -->
+			<!-- <.vvod> -->
 			<div class="vvod">
-				<h2>Ввод</h2>
-				
-				<!-- Buttons -->
-				<div class = "bt" id = "result">Выполнить</div>
-				<div class = "bt" id = "reset" >Очистить</div>
-				<!--End-->
-				
-				<!-- Matrix-table -->
-				<table class="table_dark">
-				</table>
-				<!-- End matrix-table -->
-				
-				<!-- Info -->
-				<div class = "bt_plus f_bt">+</div>
-				
-				<p class = "hidden_text h_t_2">
-					<span>Игра</span> – это построение упрощенно формализованной модели
-					конфликта.</br>			
-					<span>Теория игр</span> – это раздел математики, изучающий математические модели в конфликтных ситуациях. </br>	
-					<span>Стратегия игрока</span> – это совокупность правил, определяющих последовательность действий. </br>	
-					<span>Чистая стратегия</span> - решения игроков неслучайные. </br>	
-					<span>Смешанная стратегия</span> - выбор игрока случайная величина.</br>	
-					<span>Оптимальная стратегия</span> - максимально возможный средний выигрыш. </br>	
-					<span>Игры с природой</span> – математические модели, для которых выбор решения зависит об объективной действительности. 
-					Например, покупательский спрос, состояние природы и т.д. </br>	
-					<span>«Природа»</span> – это обобщенное понятие противника, не преследующего собственных целей в данном конфликте.</br>	
-				</p>
-				<!-- End Info -->
+				<h2 class="vvod__title title">Ввод</h2>
+
+				<div class="vvod__alert-size">
+					<p>Создайте матрицу, перед вводом значений!</p>
+				</div>
+
+				<div class="vvod__hidden-vvod">
+					<!-- Buttons -->
+					<div class = "vvod__button button" id = "bt_result">Выполнить</div><!--
+					--><div class = "vvod__button button" id = "bt_reset" >Очистить</div><!---->
+					<!--End-->
+
+					<div class="vvod__matrix">
+						<table class="vvod__table-dark table-dark">
+						</table>
+					</div>
+
+					<div class="vvod__hidden-text hidden-text">
+						<div class="hidden-text__title">Пояснение к заполнению матрицы<div class="hidden-text__x">+</div></div>
+						<div class="hidden-text__text">
+							Заполнение матрицы происходит предположительно самостоятельно высчитав значения относительно состяний природы и стратегии.</br>
+							Пример:</br>
+							Директор кафе запланировал на 8 марта расширение ассортиментного перечня напитков в меню в зависимости от погодных условий.</br>
+							Изучив статистику температурного режима за последние 50 лет на 8 марта, пришел к выводу, что имеются четыре состояния природы:</br>
+							&nbsp;&nbsp;&nbsp;&nbsp;1) теплый женский день (температура от 5 до 15 градусов), с частотой (статистическая вероятность) 15 /50;</br>
+							&nbsp;&nbsp;&nbsp;&nbsp;2) жаркий женский день (более 15 градусов), с частотой 5/50;</br>
+							&nbsp;&nbsp;&nbsp;&nbsp;3) холодный женский день (от -5 до +5 градусов), с частотой 15/50;</br>
+							&nbsp;&nbsp;&nbsp;&nbsp;4) морозный женский день (температура погоды ниже -5 градусов), счастотой 15/50.</br>
+							Исходя из своего анализа, выбрал для себя следующие стратегии:</br>
+							&nbsp;&nbsp;&nbsp;&nbsp;1) расширить ассортимент фруктовых коктейлей;</br>
+							&nbsp;&nbsp;&nbsp;&nbsp;2) расширить ассортимент мороженого;</br>
+							&nbsp;&nbsp;&nbsp;&nbsp;3) расширить ассортимент разных сортов чая;</br>
+							&nbsp;&nbsp;&nbsp;&nbsp;4) расширить ассортимент согревающих коктейлей;</br>
+							Посчитав предполагаемый дополнительный доход от продажи, директор кафе составил следующую платёжную матрицу:</br>
+							<table class="table-dark">
+								<tr>
+									<th>стратегии/сост-я природы</th>
+									<th>B1</th>
+									<th>B2</th>
+									<th>B3</th>
+									<th>B4</th>
+								</tr>
+								<tr>
+									<th>A1</th>
+									<th>15</th>
+									<th>20</th>
+									<th>13</th>
+									<th>11</th>
+								</tr>
+								<tr>
+									<th>A2</th>
+									<th>20</th>
+									<th>50</th>
+									<th>15</th>
+									<th>5</th>
+								</tr>
+								<tr>
+									<th>A3</th>
+									<th>16</th>
+									<th>9</th>
+									<th>27</th>
+									<th>45</th>
+								</tr>
+								<tr>
+									<th>A4</th>
+									<th>18</th>
+									<th>8</th>
+									<th>33</th>
+									<th>66</th>
+								</tr>
+							</table>
+							где строки соответствуют стратегиям директора кафе (первого игрока А), а столбцы – состояниям природы (второго игрока В).
+						</div>
+					</div>
+				</div>
 			</div>
-			<!-- END .vvod -->
-			
-			<!-- vivod -->
-			<div class="vivod">
-				<h2>Вывод</h2>
-				
-				<!-- Result-table -->
-				<table id = "res" class="table_dark">
-					<tr>
-						<th colspan = 3 align = center>Номера стратегий, которые выбрали критерии</th>
-					</tr>
-					<tr>
-						<th>I</th>
-						<td></td>
-					</tr>
-					<tr>
-						<th>II</th>
-						<td></td>
-					</tr>
-					<tr>
-						<th>III</th>
-						<td></td>
-					</tr>
-					<tr>
-						<th>IV</th>
-						<td></td>
-					</tr>
-					<tr>
-						<th>V</th>
-						<td></td>
-					</tr>
-				</table>
-				<!-- End Result-table -->
+			<!-- </.vvod> -->
+			<!-- <.show> -->
+			<div class="show">
+				<h2 class="show__title title">Вывод</h2>
+
+				<div class="show__matrix">
+					<!-- Result-table -->
+					<table class="show__table-dark table-dark" id="res">
+						<tr>
+							<th colspan = 2 align = center>Номера стратегий, которые выбрали критерии</th>
+						</tr>
+						<tr>
+							<th>I</th>
+							<td></td>
+						</tr>
+						<tr>
+							<th>II</th>
+							<td></td>
+						</tr>
+						<tr>
+							<th>III</th>
+							<td></td>
+						</tr>
+						<tr>
+							<th>IV</th>
+							<td></td>
+						</tr>
+						<tr>
+							<th>V</th>
+							<td></td>
+						</tr>
+					</table>
+					<!-- End Result-table -->
+				</div>
 			</div>
-			<!-- END .vivod -->
+			<!-- </.show> -->
 		</div>
-		<!-- End #center-->
+		<!-- </.cetnter> -->
 	</body>
 	<script src = "programm_theory.js"></script>
 </html>

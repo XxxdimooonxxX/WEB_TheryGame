@@ -18,43 +18,59 @@ var va	= 0,	//va	- I																//
 //array, which will help for search strategiya:											//
 var arrVA, arrMA, arrSE, arrGUR, arrLA;													//
 //////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////// Programm: //////////////////////////////////////////////////////
 /////////////////////// Create matrix: ///////////////////////////////////////////////////
-var len_x = document.querySelector("input#size_x");
-var len_y = document.querySelector("input#size_y");
-var l_x = 0, l_y = 0;	//size matrix, x - state nature, y - "strategii"
-var bt_create = document.querySelector("div#create");
-var ass = 0;
-bt_create.onclick = () =>{
-	if(ass != 0){
-		var t_matrix = document.querySelector(".table_dark");
-		var len_tr_del = t_matrix.childElementCount;
+var el_input_x  = document.querySelector("#input_x");
+var el_input_y  = document.querySelector("#input_y");
+var bt_create   = document.querySelector("#create");
 
+var l_x = 0, l_y = 0;	//size matrix, x - states nature, y - "strategii"
+var check_del = false;	//check for delete main-table
+bt_create.onclick = () =>{
+	l_x = Number(el_input_x.value);
+	l_y = Number(el_input_y.value);
+
+	var el_aletrSize = document.querySelector(".vvod__alert-size");
+	var el_hiddenVvod = document.querySelector(".vvod__hidden-vvod");
+	if(l_x < 2 || l_y < 2){
+		el_aletrSize.style.display = "block";
+		el_hiddenVvod.style.display = "none";
+		el_aletrSize.querySelector("p").innerHTML = "Матрица не может быть меньше 2х2!!!";
+		return;
+	}
+	el_hiddenVvod.style.display = "block";
+	el_aletrSize.style.display = "none";
+
+	//delete main-table if before table "sush'estvuet"
+	if(check_del){
+		var t_matrix    = document.querySelector(".table-dark");    //element table
+        var len_tr_del  = t_matrix.childElementCount;               //count elements in main-table
+        
 		for(i = 0; i < len_tr_del; i++){
-			var tr_del = t_matrix.firstElementChild;
-			t_matrix.removeChild(tr_del);
+			var tr_del = t_matrix.firstElementChild;	//get element
+			t_matrix.removeChild(tr_del);	            //delete element
 		}
 	}
-	ass++;
+	if(!check_del){
+        el_hiddenVvod.style.display = "block";
+        check_del = true;
+	}
 
-	l_x = Number(len_x.value);
-	l_y = Number(len_y.value);
-
-	arrSA	= new Array(l_y);	//array "main matrix"
+    //create arrays:
 	arrVA	= new Array(l_y);
 	arrMA	= new Array(l_y);
 	arrSE	= new Array(l_y);
 	arrGUR	= new Array(l_y);
 	arrLA	= new Array(l_y);
 
-	//create array in array "main matrix"
+    //create array in array "main matrix"
+    arrSA	= new Array(l_y);	//array "main matrix"
 	for(i = 0; i < l_y; i++){
 		arrSA[i] = new Array(l_x);
 	}
 
 	//create table-matrix(main matrix) in HTML:
-	var main_matrix = document.querySelector(".table_dark"); //get element .table_dark
-	var A_size = 1; //счетчик стратегий, для таблицы
+	var main_matrix = document.querySelector(".table-dark"); //get element .table_dark
+	var A_size = 1; //номер стратегий, для таблицы
 
 	for(i = 0; i < l_y + 1; i++){
 		//Для строки таблицы-матрицы, в которой указываются состояние природы
@@ -69,9 +85,9 @@ bt_create.onclick = () =>{
 					th_matrix.innerHTML = "B" + j;
 				}
 
-				tr_matrix.appendChild(th_matrix);
+				tr_matrix.appendChild(th_matrix);//add in tr
 			}
-			main_matrix.appendChild(tr_matrix);
+			main_matrix.appendChild(tr_matrix);//add tr in table-dark
 		}
 		//для строк-стратегий, указывается номер стратегии и вставляет поля-ввода
 		if(i != 0){
@@ -84,46 +100,47 @@ bt_create.onclick = () =>{
 
 			for(j = 1; j < l_x + 1; j++){
 				var td_matrix = document.createElement("td");//create td
-				var inps = document.createElement("input");
-				inps.name = "matrix";
+                var inps = document.createElement("input");//create input
+				//inps.name = "matrix";
 				inps.id = "matrix";
 				inps.type = "number";
 
-				td_matrix.appendChild(inps);
-				tr_matrix.appendChild(td_matrix);
+				td_matrix.appendChild(inps);//add input in td
+				tr_matrix.appendChild(td_matrix);//add td in tr
 			}
-			main_matrix.appendChild(tr_matrix);
+			main_matrix.appendChild(tr_matrix);//add tr in table-dark
 		}
 	}
 	//END create table-matrix(main matrix) in HTML
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 ////////////// PART PROGRAMM, WHICH SEARCH NUMBER "strategii" ////////////////////////////
-var bt_result = document.querySelector("div#result");	//button result, which performed main code
+var bt_result = document.querySelector("#bt_result");  //element button result, which performed main code
 bt_result.onclick = () =>{
 	//====== Read data from matrix-table =================
 	//matrix - name inputs when use matrix-table:
-	var inputs_data = document.querySelectorAll("input#matrix");
+	var el_inputs = document.querySelectorAll("input#matrix");//array elements inputs in table-dark
 	var id = 0; //id for array inputes_data:
 	for(i = 0; i < l_y; i++){
 		for(j = 0; j < l_x; j++){
-			arrSA[i][j] = inputs_data[id].value;
+			arrSA[i][j] = el_inputs[id].value;
 			id++;
 		}
 	}
 	//====== END Read data from matrix-table =======================================
 	//====== var., for output result in table-res ==================================
-	var res_td = document.querySelectorAll("#res tr td");	//elements Result-matrix
-	//====== END var., for output result in table-res ==============================
+	var el_res_td = document.querySelectorAll("#res tr td");	//elements Result-matrix
+    //====== END var., for output result in table-res ==============================
+    //====== set 0 in variable, which хранят number "strategii" ====================
+    va = ma = gur = se = la = 0;
+    //====== END set 0 in variable, which хранят number "strategii" ================
 	//================================== I =========================================
-	var a;	//var. for trash
 	//zicl for search min in all strtegii Samsung:
 	for (i = 0; i < l_y; i++) {
-		a = arrSA[i][0];
-		arrVA[i] = a;
+		arrVA[i] = Number(arrSA[i][0]);
 		for (j = 1; j < l_x; j++) {
-			if (arrSA[i][j] < a) {
-				arrVA[i] = a;
+			if (Number(arrSA[i][j]) < arrVA[i]) {
+				arrVA[i] = Number(arrSA[i][j]);
 			}
 		}
 	}
@@ -136,17 +153,15 @@ bt_result.onclick = () =>{
 		}
 	}
 	//SHOW:
-	res_td[0].innerHTML = "A" + (va + 1);	//Output in I row. result-table
+	el_res_td[0].innerHTML = "A" + (va + 1);	//Output in I row. result-table
 	//================================== END - I ===================================
 	//================================== II ========================================
 	//zicl for search max in all strtegii Samsung:
 	for (i = 0; i < l_y; i++) {
-		a = arrSA[i][0];
-		arrMA[i] = a;
+		arrMA[i] = Number(arrSA[i][0]);
 		for (j = 1; j < l_x; j++) {
-			if (arrSA[i][j] > a) {
-				a = arrSA[i][j];
-				arrMA[i] = a;
+			if (Number(arrSA[i][j]) > arrMA[i]) {
+				arrMA[i] = Number(arrSA[i][j]);
 			}
 		}
 	}
@@ -159,13 +174,13 @@ bt_result.onclick = () =>{
 		}
 	}
 	//SHOW:
-	res_td[1].innerHTML = "A" + (ma + 1);//Output in II row.
+	el_res_td[1].innerHTML = "A" + (ma + 1);//Output in II row.
 	//================================== END - II ==================================
 	//================================ III =========================================
 	const A = 0.4, B = 0.6;	//veroyzrnoct'
 	//load array arrGUR:
 	for (i = 0; i < l_y; i++) {
-		arrGUR[i] = (B * arrVA[i]) + (A * arrMA[i]);
+		arrGUR[i] = Number(B * Number(arrVA[i])) + (A * Number(arrMA[i]));
 	}
 	//Search "kriteriya" metodth Gurvits
 	var gur1 = arrGUR[0];//var. for trash
@@ -176,20 +191,39 @@ bt_result.onclick = () =>{
 		}
 	}
 	//SHOW:
-	res_td[2].innerHTML = "A" + (gur + 1);//Output in III row.
+	el_res_td[2].innerHTML = "A" + (gur + 1);//Output in III row.
 	//================================ END - III ===================================
-	//================================== IV ========================================
+    //================================== IV ========================================
+    var arrSE1 = new Array(l_x);//max in all colums
+    //search max in all collums
+    for(i = 0; i < l_x; i++){
+        arrSE1[i] = arrSA[0][i];
+        for(j = 1; j < l_y; j++){
+            if(arrSE1[i] < arrSA[j][i]){
+                arrSE1[i] = arrSA[j][i];
+            }
+        }
+    }
+    //max in all rows
+    for(i = 0; i < l_y; i++){
+        arrSE[i] = arrSE1[0] - Number(arrSA[i][0]);
+        for(j = 1; j < l_x; j++){
+            if(arrSE[i] < arrSE1[j] - Number(arrSA[i][j])){
+                arrSE[i] = arrSE1[j] - Number(arrSA[i][j]);
+            }
+        }
+    }
 	//Search min. "riska"
-	var se1 = arrMA[0];	//var. for trash
+	var se1 = arrSE[0];	//var. for trash
 	//zicl:
 	for (i = 1; i < l_y; i++) {
-		if (se1 > arrMA[i]) {
-			se1 = arrMA[i];
+		if (se1 > arrSE[i]) {
+			se1 = arrSE[i];
 			se = i;
 		}
 	}
 	//SHOW: 
-	res_td[3].innerHTML = "A" + (se + 1);//Output in IV row.
+	el_res_td[3].innerHTML = "A" + (se + 1);//Output in IV row.
 	//================================== END - IV ==================================
 	//================================== V =========================================
 	var AA = 0.33;	//"    ravnoveroyzrnost'        "
@@ -197,10 +231,10 @@ bt_result.onclick = () =>{
 	for (i = 0; i < l_y; i++) {
 		for (j = 0; j < l_x; j++) {
 			if (j == 0) {
-				arrLA[i] = arrSA[i][j] * AA;
+				arrLA[i] = Number(arrSA[i][j]) * AA;
 			}
 			else {
-				arrLA[i] += arrSA[i][j] * AA;
+				arrLA[i] += Number(arrSA[i][j]) * AA;
 			}
 		}
 	}
@@ -213,58 +247,85 @@ bt_result.onclick = () =>{
 		}
 	}
 	//SHOW:
-	res_td[4].innerHTML = "A" + (la + 1);//Output in V row.
+	el_res_td[4].innerHTML = "A" + (la + 1);//Output in V row.
 	//================================== END - V ===================================
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 ////////// Delete data in inputs and res-table ///////////////////////////////////////////
-var bt_reset = document.querySelector("div#reset");
+var bt_reset = document.querySelector("#bt_reset");
 bt_reset.onclick = () => {
-	var inputs_data = document.querySelectorAll("input");
-	for(i = 0; i < inputs_data.length; i++){
-		inputs_data[i].value = "";
+	var el_inputs = document.querySelectorAll("input");
+	for(i = 0; i < el_inputs.length; i++){
+		el_inputs[i].value = "";
 	}
 	
-	var res_td = document.querySelectorAll("#res tr td");
-	for(i = 0; i < res_td.length; i++){
-		res_td[i].innerHTML = "";
+	var el_res_td = document.querySelectorAll("#res tr td");
+	for(i = 0; i < el_res_td.length; i++){
+		el_res_td[i].innerHTML = "";
 	}
 }
 //////////////////////////////////////////////////////////////////////////////////////////
-////////// Open info /////////////////////////////////////////////////////////////////////
-var bt_p	= document.querySelectorAll("div.bt_plus");		//все плюсики
-var h_text	= document.querySelectorAll(".hidden_text");	//все скрытые тексты
-var check	= new Array(bt_p.length);						//state h_text(1 - open, 0 - close)
-for(i = 0; i < bt_p.length; i++){
-	check[i] = 1;
+//////////////// Open and Close hidden-text(info) ////////////////////////////////////////
+var el_HT_title = document.querySelectorAll(".hidden-text__title");     //array elements title
+var el_HT_text  = document.querySelectorAll(".hidden-text__text");      //array elements text
+var check       = new Array(el_HT_text.length);                         //array check, for check on open and close
+for(i = 0; i < el_HT_text.length; i++){
+    check[i] = true;
+}
+var height_text;//save size hidden-text__text
+
+el_HT_title[0].onclick = () =>{
+    if(check[0]){
+        el_HT_text[0].style.height = "100%";//set 100% to find out size in px
+        height_text = el_HT_text[0].offsetHeight + "px";//save size in px
+        el_HT_text[0].style.height = "0px";//set back 0px
+        //animation
+        el_HT_text[0].animate([{height: "0px"}, {height: height_text}], 500);
+        //
+        el_HT_text[0].style.height = height_text;//set full size height
+        el_HT_title[0].querySelector(".hidden-text__x").style.transform = "rotate(45deg)";//rotate "+" in title hidden-text
+        //for repeate click, hidden-text close:
+        check[0] = false;
+    }else{
+        height_text = el_HT_text[0].offsetHeight + "px";//save size in px
+        //animation
+        el_HT_text[0].animate([{height: height_text},{height: "0px"}],500);
+        //
+        el_HT_text[0].style.height = "0px";
+        el_HT_title[0].querySelector(".hidden-text__x").style.transform = "rotate(0deg)";
+        //for repeate click, hidden-text open:
+        check[0] = true;
+    }
 }
 
-//при клике открываем скрытый тексты
-bt_p[0].onclick = () =>{
-	if(check[0] == 1){
-		h_text[0].style.position = "relative";
-		h_text[0].style.height = "300px";
-		h_text[0].style.width = "100%";
-		check[0]--;
-	}else{
-		h_text[0].style.position = "absolute";
-		h_text[0].style.height = "0px";
-		h_text[0].style.width = "0px";
-		check[0]++;
-	}
+el_HT_title[1].onclick = () =>{
+    if(check[1]){
+        el_HT_text[1].style.height = "100%";//set 100% to find out size in px
+        height_text = el_HT_text[1].offsetHeight + "px";//save size in px
+        el_HT_text[1].style.height = "0px";//set back 0px
+        //animation
+        el_HT_text[1].animate([{height: "0px"}, {height: height_text}], 500);
+        //
+        el_HT_text[1].style.height = height_text;//set full size height
+        el_HT_title[1].querySelector(".hidden-text__x").style.transform = "rotate(45deg)";//rotate "+" in title hidden-text
+        //for repeate click, hidden-text close:
+        check[1] = false;
+    }else{
+        height_text = el_HT_text[1].offsetHeight + "px";//save size in px
+        //animation
+        el_HT_text[1].animate([{height: height_text},{height: "0px"}],500);
+        //
+        el_HT_text[1].style.height = "0px";
+        el_HT_title[1].querySelector(".hidden-text__x").style.transform = "rotate(0deg)";
+        //for repeate click, hidden-text open:
+        check[1] = true;
+    }
 }
 
-bt_p[1].onclick = () =>{
-	if(check[1] == 1){
-		h_text[1].style.position = "relative";
-		h_text[1].style.height = "300px";
-		h_text[1].style.width = "350px";
-		check[1]--;
-	}else{
-		h_text[1].style.position = "absolute";
-		h_text[1].style.height = "0px";
-		h_text[1].style.width = "0px";
-		check[1]++;
-	}
-}
-//////////////////////////////////////////////////////////////////////////////////////////
+/*
+На будущее
+Исправление ошибок, или добавление нового функционала:
+    1. Добавить(изменить) вывод так, чтобы было понятно любому пользователю. То есть надо сделать его подробным
+    2. Добавить выбор стратегии
+    3. Добавить изменение вероятностей некоторых критериев
+*/
