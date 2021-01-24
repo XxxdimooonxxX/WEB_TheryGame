@@ -41,106 +41,95 @@ body{
     color: #007FE6;
 }
 
-#center{
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 5px;
-    background: #A8F7FF;
+.center{
+	background: #A8F7FF;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 5px;
 }
 
 h1{
-    font-size: 34px;
-    line-height: 40px;
-    text-align: center;
-    border: 2px solid #007FE6;
-}
-
-/*=========== Info ===========*/
-/* button: */
-.bt_plus{
+	font-size: 34px;
+	line-height: 40px;
+	text-align: center;
 	border: 2px solid #007FE6;
-	display: inline-block;
-	line-height: 17px;
-	padding: 5px;
-	float: none;
-	font-size: 30px;
-	cursor: default;
-	user-select: none;
 }
 
+/*block .size-matrix*/
+.size-matrix{
 
-.hidden_text{
-	border: 2px dashed #007FE6;
-	padding: 5px;
-	height: 0px;
-	width: 0px;
-	overflow: hidden;
-	position: absolute;
-	bottom: 0px;
-	transition: height 0.5s;
+}
+/*repeting block title*/
+.title{
+	font-size: 28px;
+	line-height: 34px;
+	border-bottom: 1px solid #007FE6;
+	margin-bottom: 5px;
+	padding: 0px 0px;
+}
+/*repeting block button*/
+.button{
 	font-size: 20px;
-}
-.hidden_text>span{
-	font-weight: 700;
-}
-
-.f_bt{
+	line-height: 30px;
+	border: 2px solid #007FE6;
+	vertical-align: top;
+	padding: 0px 5px;
 	margin-left: 5px;
-}
-.h_t_2{
-	float: right;
-}
-/*=========== End Info ===========*/
 
-h2{
-    font-size: 24px;
-    line-height: 30px;
-    border-bottom: 1px solid #007FE6;
-    margin-bottom: 5px;
-	clear: both;
-}
-
-/*=== Button ===*/
-#bt{
-    border: 2px solid #007FE6;
-    margin-left: 5px;
-    padding: 0px 5px;
-	display: inline-block;
-    font-size: 20px;
-    line-height: 30px;
-    cursor: default;
 	user-select: none;
-	
+	cursor: default;
+
+	/*display: inline-block;*/
 	float: right;
 }
-#bt:hover{
-    background: rgba(255, 255, 255, 0.4);
+.button:hover{
+	background: rgba(255, 255, 255, 0.3);
 }
-#bt:active{
-    background: rgba(255, 255, 255, 1);
+.button:active{
+	background: rgba(255, 255, 255, 1);
 }
-/*=== End Button ===*/
+/*repeting block hidden text*/
+.hidden-text{
+	margin-top: 5px;
+	font-size: 20px;
+	line-height: 30px;
+}
+.hidden-text__title{
+	text-align: center;
+	background: #007FE6;
+	color: #A8F7FF;
 
-/*=== Matrix-table ===*/
-.table_dark{
-    border: 2px solid #007FE6;
-    background: #007FE6;
-    color: #A8F7FF;
+	user-select: none;
+}
+.hidden-text__x{
+	float: right;
+	margin-right: 5px;
+}
+.hidden-text__text{
+	height: 0px;
+	overflow: hidden;
+	border: 2px dashed #007FE6;
+	border-top: none;
+	padding: 0px 3px;
+}
+/*block vvod*/
+.vvod{
+
+}
+/*repeting block .table-dark*/
+.table-dark{
     font-size: 18px;
-    line-height: 30px;
-	
-	float: left;
+	line-height: 30px;
+	color: #A8F7FF;
+	background: #007FE6;
+	padding: 2px;
 }
-.table_dark td{
+.table-dark td, th{
     border: 1px solid #A8F7FF;
     padding: 0px 5px;
 }
-.table_dark th{
-    border: 1px solid #A8F7FF;
-    padding: 0px 5px;
-}
-.table_dark input{
-    width: 100px;
+.table-dark input{
+    width: 100%;
     display: block;
     border: none;
     color: #A8F7FF;
@@ -148,12 +137,66 @@ h2{
     border-bottom: 1px dashed black;
     padding: 5px 2px 0 2px;
 }
-.table_dark input:focus {
+.table-dark input:focus{
     outline: none;
     border-color: #A8F7FF;
 }
-/*=== End Matrix-table ===*/
-
-#res{
-	float: none;
+/*block show*/
+.show{
+	
 }
+
+/*==========================================================================================*/
+/*<size-matrix>=============================================================================*/
+.size-matrix__title{}
+/*FORM*/
+.size-matrix__form{
+	display: inline-block;
+	background: #007FE6;
+	color: #A8F7FF;
+	padding: 5px;
+}
+.size-matrix__border-inputs{
+	display: inline-block;
+	border: 2px solid #A8F7FF;
+	padding: 5px;
+}
+.size-matrix__input{
+	color: #A8F7FF;
+	background: transparent;
+	border: none;
+	border-bottom: 1px dashed #000000;
+	padding: 5px 2px 0px 2px;
+	vertical-align: middle;
+}
+.size-matrix__button{
+	border-color: #A8F7FF;
+	vertical-align: middle;
+	margin-top: 1px;
+}
+/*END FORM*/
+.size-matrix__hidden-text{}
+/*</size-matrix>============================================================================*/
+/*<vvod>====================================================================================*/
+.vvod__title{}
+.vvod__alert-size{
+	display: block;
+	font-size: 20px;
+    line-height: 30px;
+	text-align: center;
+	border: 2px dashed #007FE6;
+}
+.vvod__hidden-vvod{
+	display: none;
+}
+.vvod__button{}
+#bt_result{}
+#bt_reset{}
+.vvod__table-dark{}
+.vvod__hidden-text{}
+/*</vvod>===================================================================================*/
+/*<show>====================================================================================*/
+.show__title{}
+.show__matrix{}
+.show__table-dark{}
+/*</show>====================================================================================*/
