@@ -112,6 +112,69 @@ h1{
 	border-top: none;
 	padding: 0px 3px;
 }
+/*select*/
+.select{}
+/*criteriys*/
+.criteriy{
+	border: 2px solid #007FE6;
+	padding: 5px;
+}
+.criteriy p{
+	display: inline-block;
+	font-size: 20px;
+
+	transform: translateY(-30%);
+}
+.criteriy__check{
+
+}
+.criteriy__switcher{
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+
+	width: 104px;
+	height: 29px;
+}
+.criteriy__switcher label{
+	z-index: 1;
+	position: absolute;
+	top: 2px;
+	background: #A8F7FF;
+	width: 100px;
+	height: 25px;
+}
+.check-select{
+	appearance: none;/*delete default cheackbox from input*/
+
+	font-family: "Oswald", sans-serif;
+	/*font-size: 56.266px;*/
+	position: relative;
+	width: 104px;
+	height: 29px;
+	background: #007FE6;
+
+	border: 2px solid #007FE6;
+}
+.check-select::after{
+	content: 'OFF';
+	color: #A8F7FF;
+	right: 5px;
+}
+.check-select::before{
+	content: 'ON';
+	color: #007FE6;
+	left: 5px;
+}
+.check-select::before, .check-select::after{
+	z-index: 2;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.check-select:checked + label{
+	left: 2px;
+}
 /*block vvod*/
 .vvod{
 
@@ -177,6 +240,10 @@ h1{
 /*END FORM*/
 .size-matrix__hidden-text{}
 /*</size-matrix>============================================================================*/
+/*<select>====================================================================================*/
+.select__title{}
+.select__criteriy{}
+/*</select>====================================================================================*/
 /*<vvod>====================================================================================*/
 .vvod__title{}
 .vvod__alert-size{
