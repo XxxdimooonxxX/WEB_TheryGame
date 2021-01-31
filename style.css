@@ -116,17 +116,41 @@ h1{
 .select{}
 /*criteriys*/
 .criteriy{
+	position: relative;
 	border: 2px solid #007FE6;
-	padding: 5px;
+	padding: 0px 5px;
+	/*height: 39px;*/
+	overflow: hidden;
 }
-.criteriy p{
+.criteriy-check{
+	position: relative;
+}
+.criteriy>.criteriy-check p{
 	display: inline-block;
 	font-size: 20px;
 
-	transform: translateY(-30%);
+	vertical-align: top;
+	padding: 5px;
+	margin: 3px 0px 0px 0px;
+	/*transform: translateY(-30%);*/
 }
-.criteriy__check{
+.criteriy-open-info{
+	font-size: 14px;
+	line-height: 14px;
+	display: inline-block;
+	border: 2px solid #007FE6;
+	padding: 5px 10px;
 
+	/*transform: translateY(-30%);*/
+	margin: 3px 0px 0px 0px;
+	float: right;
+}
+.criteriy-info{
+	height: 0px;
+	font-size: 16px;
+}
+.criteriy__switcher, .criteriy__switcher label, .check-select{
+	border-radius: 10px;
 }
 .criteriy__switcher{
 	display: inline-block;
@@ -135,6 +159,8 @@ h1{
 
 	width: 104px;
 	height: 29px;
+
+	margin: 3px 0px 0px 0px;
 }
 .criteriy__switcher label{
 	z-index: 1;
@@ -157,12 +183,12 @@ h1{
 	border: 2px solid #007FE6;
 }
 .check-select::after{
-	content: 'OFF';
+	content: 'ВЫКЛ.';
 	color: #A8F7FF;
 	right: 5px;
 }
 .check-select::before{
-	content: 'ON';
+	content: 'ВКЛ.';
 	color: #007FE6;
 	left: 5px;
 }

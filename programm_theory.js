@@ -322,6 +322,60 @@ el_HT_title[1].onclick = () =>{
     }
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////// Open info in criteries //////////////////////////////////////////////////
+//NC = Name Class
+//CI = Criteriy Info
+var bt_infoCriteria = document.querySelectorAll(".criteriy-open-info");
+var el_criteriyInfo = document.querySelectorAll(".criteriy-info");
+//var NC_el_CI = "criteriy-info";
+//var NC_bt_IC = "criteriy-open-info";
+var checkInfo = new Array(bt_infoCriteria.length);
+for(i = 0; i < bt_infoCriteria.length; i++){
+	el_criteriyInfo[i].className = i + "criteriy-info" + " " + "criteriy-info";
+	bt_infoCriteria[i].className = i + "criteriy-open-info" + " " + "criteriy-open-info";
+	checkInfo[i] = true;
+}
+
+var heightInfo = 0;
+var target, char_T;
+
+bt_infoCriteria[0].onclick = OpenInfo;
+bt_infoCriteria[1].onclick = OpenInfo;
+bt_infoCriteria[2].onclick = OpenInfo;
+bt_infoCriteria[3].onclick = OpenInfo;
+bt_infoCriteria[4].onclick = OpenInfo;
+
+function OpenInfo(event){
+	target = event.target.className;
+	char_T = target[0];
+	if(checkInfo[char_T]){
+		el_criteriyInfo[char_T].style.height = "100%";
+		el_criteriyInfo[char_T].style.borderTop = "2px dashed #007FE6";
+		heightInfo = el_criteriyInfo[char_T].offsetHeight + 1 + "px";
+		el_criteriyInfo[char_T].style.borderTop = "none";
+		el_criteriyInfo[char_T].style.height = "0px";
+
+		el_criteriyInfo[char_T].animate([{height: "0px"}, {height: heightInfo}], 500);
+
+		el_criteriyInfo[char_T].style.borderTop = "2px dashed #007FE6";
+		el_criteriyInfo[char_T].style.height = heightInfo;
+
+		checkInfo[char_T] = false;
+	}else{
+		el_criteriyInfo[char_T].style.height = "100%";
+		el_criteriyInfo[char_T].style.borderTop = "none";
+		heightInfo = el_criteriyInfo[char_T].offsetHeight + 1 + "px";
+		el_criteriyInfo[char_T].style.height = "0px";
+
+		el_criteriyInfo[char_T].animate([{height: heightInfo}, {height: "0px"}], 500);
+
+		el_criteriyInfo[char_T].style.height = "0px";
+
+		checkInfo[char_T] = true;
+	}
+}
+
 /*
 На будущее
 Исправление ошибок, или добавление нового функционала:
