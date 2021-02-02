@@ -22,6 +22,7 @@ var arrVA, arrMA, arrSE, arrGUR, arrLA;													//
 var el_input_x  = document.querySelector("#input_x");
 var el_input_y  = document.querySelector("#input_y");
 var bt_create   = document.querySelector("#create");
+var el_SC		= document.querySelectorAll(".check-select");//check-select in .criteriy
 
 var l_x = 0, l_y = 0;	//size matrix, x - states nature, y - "strategii"
 var check_del = false;	//check for delete main-table
@@ -132,122 +133,136 @@ bt_result.onclick = () =>{
 	var el_res_td = document.querySelectorAll("#res tr td");	//elements Result-matrix
     //====== END var., for output result in table-res ==============================
     //====== set 0 in variable, which хранят number "strategii" ====================
-    va = ma = gur = se = la = 0;
+	va = ma = gur = se = la = 0;
+	//clear result table
+	for(i = 0; i < 5; i++){
+		el_res_td[i].innerHTML = "";
+	}
     //====== END set 0 in variable, which хранят number "strategii" ================
 	//================================== I =========================================
-	//zicl for search min in all strtegii Samsung:
-	for (i = 0; i < l_y; i++) {
-		arrVA[i] = Number(arrSA[i][0]);
-		for (j = 1; j < l_x; j++) {
-			if (Number(arrSA[i][j]) < arrVA[i]) {
-				arrVA[i] = Number(arrSA[i][j]);
+	if(el_SC[0].checked){
+		//zicl for search min in all strtegii Samsung:
+		for (i = 0; i < l_y; i++) {
+			arrVA[i] = Number(arrSA[i][0]);
+			for (j = 1; j < l_x; j++) {
+				if (Number(arrSA[i][j]) < arrVA[i]) {
+					arrVA[i] = Number(arrSA[i][j]);
+				}
 			}
 		}
-	}
-	//Search maxed in arrVA
-	var va1 = arrVA[0];	//var. for search maxed in arrVA
-	for (i = 1; i < l_y; i++) {
-		if (va1 < arrVA[i]) {
-			va1 = arrVA[i];
-			va = i;
+		//Search maxed in arrVA
+		var va1 = arrVA[0];	//var. for search maxed in arrVA
+		for (i = 1; i < l_y; i++) {
+			if (va1 < arrVA[i]) {
+				va1 = arrVA[i];
+				va = i;
+			}
 		}
+		//SHOW:
+		el_res_td[0].innerHTML = "A" + (va + 1);	//Output in I row. result-table
 	}
-	//SHOW:
-	el_res_td[0].innerHTML = "A" + (va + 1);	//Output in I row. result-table
 	//================================== END - I ===================================
 	//================================== II ========================================
-	//zicl for search max in all strtegii Samsung:
-	for (i = 0; i < l_y; i++) {
-		arrMA[i] = Number(arrSA[i][0]);
-		for (j = 1; j < l_x; j++) {
-			if (Number(arrSA[i][j]) > arrMA[i]) {
-				arrMA[i] = Number(arrSA[i][j]);
+	if(el_SC[1].checked){
+		//zicl for search max in all strtegii Samsung:
+		for (i = 0; i < l_y; i++) {
+			arrMA[i] = Number(arrSA[i][0]);
+			for (j = 1; j < l_x; j++) {
+				if (Number(arrSA[i][j]) > arrMA[i]) {
+					arrMA[i] = Number(arrSA[i][j]);
+				}
 			}
 		}
-	}
-	//Search maxed in arrMA
-	var ma1 = arrMA[0];	//var. for trash
-	for (i = 1; i < l_y; i++) {
-		if (ma1 < arrMA[i]) {
-			ma1 = arrMA[i];
-			ma = i;
+		//Search maxed in arrMA
+		var ma1 = arrMA[0];	//var. for trash
+		for (i = 1; i < l_y; i++) {
+			if (ma1 < arrMA[i]) {
+				ma1 = arrMA[i];
+				ma = i;
+			}
 		}
+		//SHOW:
+		el_res_td[1].innerHTML = "A" + (ma + 1);//Output in II row.
 	}
-	//SHOW:
-	el_res_td[1].innerHTML = "A" + (ma + 1);//Output in II row.
 	//================================== END - II ==================================
 	//================================ III =========================================
-	const A = 0.4, B = 0.6;	//veroyzrnoct'
-	//load array arrGUR:
-	for (i = 0; i < l_y; i++) {
-		arrGUR[i] = Number(B * Number(arrVA[i])) + (A * Number(arrMA[i]));
-	}
-	//Search "kriteriya" metodth Gurvits
-	var gur1 = arrGUR[0];//var. for trash
-	for (i = 1; i < l_y; i++) {
-		if (gur1 < arrGUR[i]) {
-			gur1 = arrGUR[i];
-			gur = i;
+	if(el_SC[2].checked){
+		const A = 0.4, B = 0.6;	//veroyzrnoct'
+		//load array arrGUR:
+		for (i = 0; i < l_y; i++) {
+			arrGUR[i] = Number(B * Number(arrVA[i])) + (A * Number(arrMA[i]));
 		}
+		//Search "kriteriya" metodth Gurvits
+		var gur1 = arrGUR[0];//var. for trash
+		for (i = 1; i < l_y; i++) {
+			if (gur1 < arrGUR[i]) {
+				gur1 = arrGUR[i];
+				gur = i;
+			}
+		}
+		//SHOW:
+		el_res_td[2].innerHTML = "A" + (gur + 1);//Output in III row.
 	}
-	//SHOW:
-	el_res_td[2].innerHTML = "A" + (gur + 1);//Output in III row.
 	//================================ END - III ===================================
-    //================================== IV ========================================
-    var arrSE1 = new Array(l_x);//max in all colums
-    //search max in all collums
-    for(i = 0; i < l_x; i++){
-        arrSE1[i] = arrSA[0][i];
-        for(j = 1; j < l_y; j++){
-            if(arrSE1[i] < arrSA[j][i]){
-                arrSE1[i] = arrSA[j][i];
-            }
-        }
-    }
-    //max in all rows
-    for(i = 0; i < l_y; i++){
-        arrSE[i] = arrSE1[0] - Number(arrSA[i][0]);
-        for(j = 1; j < l_x; j++){
-            if(arrSE[i] < arrSE1[j] - Number(arrSA[i][j])){
-                arrSE[i] = arrSE1[j] - Number(arrSA[i][j]);
-            }
-        }
-    }
-	//Search min. "riska"
-	var se1 = arrSE[0];	//var. for trash
-	//zicl:
-	for (i = 1; i < l_y; i++) {
-		if (se1 > arrSE[i]) {
-			se1 = arrSE[i];
-			se = i;
+	//================================== IV ========================================
+	if(el_SC[3].checked){
+		var arrSE1 = new Array(l_x);//max in all colums
+		//search max in all collums
+		for(i = 0; i < l_x; i++){
+			arrSE1[i] = arrSA[0][i];
+			for(j = 1; j < l_y; j++){
+				if(arrSE1[i] < arrSA[j][i]){
+					arrSE1[i] = arrSA[j][i];
+				}
+			}
 		}
+		//max in all rows
+		for(i = 0; i < l_y; i++){
+			arrSE[i] = arrSE1[0] - Number(arrSA[i][0]);
+			for(j = 1; j < l_x; j++){
+				if(arrSE[i] < arrSE1[j] - Number(arrSA[i][j])){
+					arrSE[i] = arrSE1[j] - Number(arrSA[i][j]);
+				}
+			}
+		}
+		//Search min. "riska"
+		var se1 = arrSE[0];	//var. for trash
+		//zicl:
+		for (i = 1; i < l_y; i++) {
+			if (se1 > arrSE[i]) {
+				se1 = arrSE[i];
+				se = i;
+			}
+		}
+		//SHOW: 
+		el_res_td[3].innerHTML = "A" + (se + 1);//Output in IV row.
 	}
-	//SHOW: 
-	el_res_td[3].innerHTML = "A" + (se + 1);//Output in IV row.
 	//================================== END - IV ==================================
 	//================================== V =========================================
-	var AA = 0.33;	//"    ravnoveroyzrnost'        "
-	//zicl:
-	for (i = 0; i < l_y; i++) {
-		for (j = 0; j < l_x; j++) {
-			if (j == 0) {
-				arrLA[i] = Number(arrSA[i][j]) * AA;
-			}
-			else {
-				arrLA[i] += Number(arrSA[i][j]) * AA;
+	if(el_SC[4].checked){
+		var AA = 0.33;	//"    ravnoveroyzrnost'        "
+		//zicl:
+		for (i = 0; i < l_y; i++) {
+			for (j = 0; j < l_x; j++) {
+				if (j == 0) {
+					arrLA[i] = Number(arrSA[i][j]) * AA;
+				}
+				else {
+					arrLA[i] += Number(arrSA[i][j]) * AA;
+				}
 			}
 		}
-	}
-	//Searh "kriteriya" metodth Laplasa
-	var la1 = arrLA[0];//var. for trash
-	for (i = 1; i < l_y; i++) {
-		if (la1 < arrLA[i]) {
-			la1 = arrLA[i];
-			la = i;
+		//Searh "kriteriya" metodth Laplasa
+		var la1 = arrLA[0];//var. for trash
+		for (i = 1; i < l_y; i++) {
+			if (la1 < arrLA[i]) {
+				la1 = arrLA[i];
+				la = i;
+			}
 		}
+		//SHOW:
+		el_res_td[4].innerHTML = "A" + (la + 1);//Output in V row.
 	}
-	//SHOW:
-	el_res_td[4].innerHTML = "A" + (la + 1);//Output in V row.
 	//================================== END - V ===================================
 }
 //////////////////////////////////////////////////////////////////////////////////////////

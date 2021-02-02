@@ -38,7 +38,9 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 /*--------------------*/
 body{
     background: #007FE6;
-    color: #007FE6;
+	color: #007FE6;
+	
+	overflow-y: scroll;
 }
 
 .center{
@@ -119,8 +121,12 @@ h1{
 	position: relative;
 	border: 2px solid #007FE6;
 	padding: 0px 5px;
+	margin-top: 5px;
 	/*height: 39px;*/
 	overflow: hidden;
+}
+.criteriy:first-child{
+	margin-top: 0px;
 }
 .criteriy-check{
 	position: relative;
